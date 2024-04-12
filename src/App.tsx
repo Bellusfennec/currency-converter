@@ -1,3 +1,3 @@
 export function App() {
-  return <>App</>;
+  return <div className="text-red-500">App</div>;
 }
