@@ -66,13 +66,13 @@ export const Selector: React.FC<SelectorProps> = ({ options, placeholder }) => {
       >
     </input>
     {show && <div className="my-2 bg-white border w-full rounded-md py-2 text-base font-normal max-h-[200px] overflow-y-auto">
-      {filterOptions.length !== 0 ? filterOptions.map((el) => {
-        return <div key={el} className="flex justify-between text-base cursor-pointer font-normal text-black hover:bg-zinc-100 items-center">
+      {filterOptions.length !== 0 ? filterOptions.map((el) => (
+        <div key={el} className="flex justify-between text-base cursor-pointer font-normal text-black hover:bg-zinc-100 items-center">
           <div className="px-2 py-1 w-full" onClick={() => handleSetValue(el)} >
           {el}</div>
           <button onClick={() => handleFavourite(el)} className="w-7 h-6 mr-1 rounded-sm bg-red-300">+</button>
         </div>
-      })
+      ))
       : <div className="px-4 py-1 text-base cursor-pointer font-normal text-black">No results avaible</div>
     }
     </div>}
