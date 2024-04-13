@@ -7,11 +7,8 @@ interface InputFieldProps {
 }
 
 export const InputField = ({ value, onChange }: InputFieldProps) => {
-
-
   const handleChange = ({ target }: InputChangeEvent) => {
-    let inputValue = target.value.replace(/^(0+)\B/, "");
-		if
+    const inputValue = target.value.replace(/^(0+)\B/, "");
     if (isNaN(Number(inputValue))) return;
     if (inputValue.indexOf(" ") !== -1) return;
     onChange(inputValue);
