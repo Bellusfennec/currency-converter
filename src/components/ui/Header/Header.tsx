@@ -1,10 +1,35 @@
-import { NavLink } from "react-router-dom";
+import { FC } from "react";
+import { Link, NavLink } from "react-router-dom";
+import { Container } from "../../common/Container";
 
-export const Header = () => {
+const menuList = [{ name: "Избранное", link: "/favorites" }];
+
+interface HeaderProps {
+  className?: string;
+}
+
+export const Header: FC<HeaderProps> = ({ className }) => {
   return (
-    <div className="flex justify-between">
-      <div>Currency converter</div>
-      <NavLink to="/favorites">Избранное</NavLink>
-    </div>
+    <header className={"border-b" + (className ? " " + className : "")}>
+      <Container className="flex justify-between items-center">
+        <Link
+          className="font-bold text-2xl text-orange-700 hover:text-orange-900 py-3"
+          to="/"
+        >
+          CurCon
+        </Link>
+        <nav>
+          {menuList.map(({ name, link }) => (
+            <NavLink
+              key={name}
+              className="text-gray-700 py-3 hover:text-orange-700"
+              to={link}
+            >
+              {name}
+            </NavLink>
+          ))}
+        </nav>
+      </Container>
+    </header>
   );
 };

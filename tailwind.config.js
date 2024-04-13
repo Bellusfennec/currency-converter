@@ -8,9 +8,9 @@ export default {
       dl: "880px",
       lg: "976px",
       xg: "1324px",
-      xl: "1440px",
+      xl: "1440px"
     },
-    extend: {},
+    extend: {}
   },
-  plugins: [],
+  plugins: []
 };
