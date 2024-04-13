@@ -79,6 +79,5 @@ export const Selector: React.FC<SelectorProps> = ({ options, placeholder }) => {
       : <div className="px-4 py-1 text-base cursor-pointer font-normal text-black">No results avaible</div>
     }
     </div>}
-
   </div>
 }
