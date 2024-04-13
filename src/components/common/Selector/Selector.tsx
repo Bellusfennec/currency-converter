@@ -13,7 +13,6 @@ export const Selector: React.FC<SelectorProps> = ({ options, placeholder }) => {
   const [value, setValue] = useState<Record<string, number> | null>(null)
   const [inputValue, setInputValue] = useState<string>("")
   const [show, setShow] = useState<boolean>(false)
-  const [addFavour, setAddFavour] = useState<boolean>(false)
   const selectRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -33,12 +32,10 @@ export const Selector: React.FC<SelectorProps> = ({ options, placeholder }) => {
   }
 
   const handleSetValue = (key: string): void => {
-    if (!addFavour) {
-      const valit = options[key]
-      setValue({[key]: valit})
-      setInputValue(key)
-      setShow(false)
-    }
+    const valit = options[key]
+    setValue({[key]: valit})
+    setInputValue(key)
+    setShow(false)
   }
 
   const handleFavourite = (key: string): void => {
