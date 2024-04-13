@@ -1,5 +1,3 @@
-import { numberWithSpaces } from "./utils/numberWithSpaces";
-
 interface Props {
    amount: number
    convertible_currency: string
@@ -7,8 +5,13 @@ interface Props {
    course: number
 }
 
-export const Result = ({ amount, convertible_currency, conversion_into_currency, course }: Props) => {
+export const numberWithSpaces = (x: number) => {
+   const parts = x.toString().split(".");
+   parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+   return parts.join(".");
+}
 
+export const Result = ({ amount, convertible_currency, conversion_into_currency, course }: Props) => {
    return (
       <div className="w-full">
          <div className="text-gray-500 font-semibold text-2xl">{numberWithSpaces(amount)} {convertible_currency} =</div>
