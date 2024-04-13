@@ -1,7 +1,7 @@
 import { FC } from "react";
 
 interface ContainerProps {
-  children: React.ReactNode;
+  children: React.ReactNode | React.ReactNode[];
   className?: string;
 }
 
