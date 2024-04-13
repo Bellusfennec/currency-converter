@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useMemo, useRef, useState } from "react"
 
 interface SelectorProps {
   options: Record<string, number>,
@@ -23,7 +23,7 @@ export const Selector: React.FC<SelectorProps> = ({ options, placeholder }) => {
     };
   }, []);
 
-  const filterOptions = Object.keys(options).filter(el => el.includes(inputValue))
+  const filterOptions = useMemo(() => Object.keys(options).filter(el => el.includes(inputValue)), [options, inputValue])
 
   const handleChange = ({ target }: InputChangeEvent): void => {
     setInputValue(target.value)
