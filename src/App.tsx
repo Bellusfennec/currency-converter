@@ -1,3 +1,5 @@
+import { AppRoute } from "./AppRoute";
+
 export function App() {
-  return <>App</>;
+  return <AppRoute />;
 }
