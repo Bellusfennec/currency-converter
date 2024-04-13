@@ -8,10 +8,6 @@ const rootReducer = combineReducers({
 
 const store = configureStore({
   reducer: rootReducer,
-  middleware: getDefaultMiddleware =>
-    getDefaultMiddleware({
-      serializableCheck: false
-    }),
   devTools: isDev()
 });
 export default store;
