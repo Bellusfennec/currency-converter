@@ -7,7 +7,7 @@ interface Props {
    course: number
 }
 
-export const ResultComponent = ({ amount, convertible_currency, conversion_into_currency, course }: Props) => {
+export const Result = ({ amount, convertible_currency, conversion_into_currency, course }: Props) => {
 
    return (
       <div className="w-full">
