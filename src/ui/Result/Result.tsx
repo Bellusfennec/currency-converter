@@ -1,23 +1,26 @@
+import { useCallback } from "react"
+
 interface Props {
    amount: number
-   convertible_currency: string
-   conversion_into_currency: string
+   convertibleCurrency: string
+   conversionIntoCurrency: string
    course: number
 }
 
-export const numberWithSpaces = (x: number) => {
-   const parts = x.toString().split(".");
-   parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-   return parts.join(".");
-}
+export const Result = ({ amount, convertibleCurrency, conversionIntoCurrency, course }: Props) => {
 
-export const Result = ({ amount, convertible_currency, conversion_into_currency, course }: Props) => {
+   const numberWithSpaces = useCallback((num: number) => {
+      const parts = num.toString().split(".")
+      parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+      return parts.join(".")
+   }, [amount, course])
+
    return (
       <div className="w-full">
-         <div className="text-gray-500 font-semibold text-2xl">{numberWithSpaces(amount)} {convertible_currency} =</div>
-         <div className="text-gray-600 font-bold text-3xl my-2.5">{numberWithSpaces((amount * course))} {conversion_into_currency}</div>
-         <div className="text-gray-500 font-normal text-sm">1 {convertible_currency} = {course} {conversion_into_currency}</div>
-         <div className="text-gray-500 font-normal text-sm">1 {conversion_into_currency} = {(1 / course).toFixed(7)} {convertible_currency}</div>
+         <div className="text-gray-500 font-semibold text-2xl">{numberWithSpaces(amount)} {convertibleCurrency} =</div>
+         <div className="text-gray-600 font-bold text-3xl my-2.5">{numberWithSpaces((amount * course))} {conversionIntoCurrency}</div>
+         <div className="text-gray-500 font-normal text-sm">1 {convertibleCurrency} = {course} {conversionIntoCurrency}</div>
+         <div className="text-gray-500 font-normal text-sm">1 {conversionIntoCurrency} = {(1 / course).toFixed(7)} {convertibleCurrency}</div>
       </div>
    )
-};
+}
