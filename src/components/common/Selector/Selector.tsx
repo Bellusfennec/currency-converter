@@ -25,14 +25,14 @@ export const Selector: React.FC<SelectorProps> = ({ options, placeholder }) => {
 
   const filterOptions = Object.keys(options).filter(el => el.includes(inputValue))
 
-  const handleChange = ({ target }: InputChangeEvent) => {
+  const handleChange = ({ target }: InputChangeEvent): void => {
     setInputValue(target.value)
     if (target.value.length === 0) {
       setValue(null)
     } 
   }
 
-  const handleSetValue = (key: string) => {
+  const handleSetValue = (key: string): void => {
     if (!addFavour) {
       const valit = options[key]
       setValue({[key]: valit})
@@ -41,7 +41,11 @@ export const Selector: React.FC<SelectorProps> = ({ options, placeholder }) => {
     }
   }
 
-  const handleClickOutside = (e: MouseEvent) => {
+  const handleFavourite = (key: string): void => {
+    console.log(key)
+  }
+
+  const handleClickOutside = (e: MouseEvent): void => {
     if (selectRef.current && !selectRef.current.contains(e.target as Node)) {
       setShow(false);
       console.log(value)
@@ -66,9 +70,10 @@ export const Selector: React.FC<SelectorProps> = ({ options, placeholder }) => {
     </input>
     {show && <div className="my-2 bg-white border w-full rounded-md py-2 text-base font-normal max-h-[200px] overflow-y-auto">
       {filterOptions.length !== 0 ? filterOptions.map((el) => {
-        return <div key={el} onClick={() => handleSetValue(el)} className="px-2 py-1 flex justify-between text-base cursor-pointer font-normal text-black hover:bg-zinc-100">
-          {el}
-          <button className="w-6 bg-gray-600 h-full">+</button>
+        return <div key={el} className="flex justify-between text-base cursor-pointer font-normal text-black hover:bg-zinc-100 items-center">
+          <div className="px-2 py-1 w-full" onClick={() => handleSetValue(el)} >
+          {el}</div>
+          <button onClick={() => handleFavourite(el)} className="w-7 h-6 mr-1 rounded-sm bg-red-300">+</button>
         </div>
       })
       : <div className="px-4 py-1 text-base cursor-pointer font-normal text-black">No results avaible</div>
