@@ -9,7 +9,6 @@ export const requestCurrency = createAsyncThunk("currency/set", async () => {
   const responce = currencies.data.conversion_rates;
   const massCurrencies = [];
   for (const currency in responce) {
-    console.log(currency);
     massCurrencies.push({ name: currency, value: responce[currency] });
   }
   return massCurrencies;
