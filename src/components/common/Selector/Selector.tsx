@@ -1,9 +1,9 @@
+
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Currency } from "../../../types";
 import { FavoriteButton } from "../FavoriteButton";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { addFavorites, deleteFavorites, getFavorites } from "../../../store/common/favorites.slicer";
-
 
 interface SelectorProps {
   options: Currency[];
@@ -14,7 +14,7 @@ interface SelectorProps {
 interface InputChangeEvent {
   target: HTMLInputElement;
 }
-
+  
 export const Selector: React.FC<SelectorProps> = ({ options = [], placeholder, onChange }) => {
   const dispatch = useAppDispatch()
   const [favorites, setFavorites] = useState<Currency[]>(useAppSelector(getFavorites()))
