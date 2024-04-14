@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import { FC, useEffect, useMemo, useRef, useState } from "react";
 
 interface SelectorProps {
   options: Record<string, number>;
@@ -9,7 +9,7 @@ interface InputChangeEvent {
   target: HTMLInputElement;
 }
 
-export const Selector: React.FC<SelectorProps> = ({ options, placeholder }) => {
+export const Selector: FC<SelectorProps> = ({ options, placeholder }) => {
   const [value, setValue] = useState<Record<string, number> | null>(null);
   const [inputValue, setInputValue] = useState<string>("");
   const [show, setShow] = useState<boolean>(false);
