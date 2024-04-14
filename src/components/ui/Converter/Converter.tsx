@@ -30,13 +30,12 @@ export const Converter = () => {
     });
     setReversed(!reversed);
   };
-  console.log(formState, reversed);
 
   return (
     <div className="flex gap-3 flex-col">
       <div className="flex gap-3 items-center">
         <InputField
-          label={formState.to?.name || ""}
+          label={formState.from?.name || ""}
           value={formState.amount}
           onChange={value =>
             setFormState(state => ({ ...state, amount: value }))
@@ -59,7 +58,7 @@ export const Converter = () => {
       {
         <Result
           amount={+formState.amount}
-          conversionIntoCurrency={formState.from.name}
+          conversionIntoCurrency={formState.to.name}
           convertibleCurrency={formState.from.name}
           course={
             currency.find(curr => curr.name === formState.to.name)?.value || 1
