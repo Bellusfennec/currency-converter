@@ -20,7 +20,7 @@ export const FavoriteButton: React.FC<FavoriteButtonProps> = ({ item, favouriteS
   return (
     <button
       onClick={handleToggle}
-      className="flex w-7 h-6 mr-2 rounded-sm bg-gray-200 justify-center items-center"
+      className="flex w-7 h-7 rounded-md bg-gray-200 justify-center items-center"
     >
       <img className="w-5" src={favourite ? logoActive : logo} alt={favourite ? "-" : "+"} />
     </button>
