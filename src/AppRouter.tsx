@@ -35,7 +35,7 @@ export const AppRouter = () => {
           }
         />
         <Route
-          path="/stories"
+          path="/story"
           element={
             <Suspense fallback={<Loader />}>
               <Stories />
