@@ -35,7 +35,7 @@ export const Home = () => {
     <div className="flex flex-col gap-3">
       <Title tag="h1">{t("conversion")}</Title>
       {countConverter.map(order => (
-        <div className="flex gap-5 justify-between items-center" key={order}>
+        <div className="flex gap-5  justify-center items-center ml:justify-between" key={order}>
           <Converter key={order} />
         </div>
       ))}

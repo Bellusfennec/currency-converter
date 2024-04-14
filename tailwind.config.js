@@ -4,8 +4,8 @@ export default {
   theme: {
     screens: {
       sm: "480px",
+      sd: "520px",
       md: "768px",
-      dl: "880px",
       lg: "976px",
       xg: "1324px",
       xl: "1440px"

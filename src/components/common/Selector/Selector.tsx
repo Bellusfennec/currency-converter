@@ -101,13 +101,13 @@ export const Selector: React.FC<SelectorProps> = ({
   return (
     <div
       ref={selectRef}
-      className="w-[200px] rounded-sm flex items-center flex-col text-base font-normal relative"
+      className="w-full rounded-sm flex items-center flex-col text-base font-normal relative sd:w-[200px]"
     >
       <input
         className="
-          w-[200px] border-[1px] bg-white py-2 px-3
+          w-[260px] border-[1px] bg-white py-2 px-3
           rounded-lg outline-none caret-black shadow-sm
-        hover:border-blue-400 focus:border-blue-400"
+        hover:border-blue-400 focus:border-blue-400 sd:w-[200px]"
         onChange={handleChange}
         placeholder={placeholder}
         value={inputValue}

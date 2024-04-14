@@ -20,9 +20,9 @@ export const InputField = ({ value, onChange, label }: InputFieldProps) => {
 
   return (
     <div
-      className="flex  border-[1px]  bg-white py-2 px-3
-		rounded-lg outline-none caret-black 
-	hover:border-blue-400 focus:border-blue-400 w-full"
+      className="flex border-[1px]  bg-white py-2 px-3
+		  rounded-lg outline-none caret-black  w-full
+	   hover:border-blue-400 focus:border-blue-400 md:w-[200px]"
     >
       <p className="text-gray-400">{label}</p>
       <input
