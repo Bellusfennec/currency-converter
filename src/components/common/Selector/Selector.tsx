@@ -27,7 +27,7 @@ export const Selector: React.FC<SelectorProps> = ({
   onChange,
   value
 }) => {
-  console.log("#### value", value)
+  console.log("#### value", value);
   const dispatch = useAppDispatch();
   const [favorites, setFavorites] = useState<Currency[]>(
     useAppSelector(getFavorites())
@@ -38,8 +38,8 @@ export const Selector: React.FC<SelectorProps> = ({
   const { t } = useTranslation();
 
   useEffect(() => {
-    setInputValue(value)
-  }, [value])
+    setInputValue(value);
+  }, [value]);
 
   useEffect(() => {
     document.addEventListener("click", handleClickOutside);
