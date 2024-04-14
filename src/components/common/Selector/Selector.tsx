@@ -56,7 +56,7 @@ export const Selector: React.FC<SelectorProps> = ({
           }
           return 1;
         })
-        .filter(el => el.name.includes(inputValue)),
+        .filter(el => el.name.toLowerCase().includes(inputValue.toLowerCase())),
     [options, favorites, inputValue]
   );
 
@@ -121,11 +121,13 @@ export const Selector: React.FC<SelectorProps> = ({
                 >
                   {el.name}
                 </div>
-                <FavoriteButton
-                  item={el}
-                  onFavourite={handleFavourite}
-                  favouriteState={isObjectInArray(el, favorites)}
-                />
+                <div className="mr-2">
+                  <FavoriteButton
+                    item={el}
+                    onFavourite={handleFavourite}
+                    favouriteState={isObjectInArray(el, favorites)}
+                  />
+                </div>
               </div>
             ))
           ) : (

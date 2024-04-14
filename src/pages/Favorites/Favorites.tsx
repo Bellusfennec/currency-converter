@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import { Title } from "../../components/common/Title";
 import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { addFavorites, deleteFavorites, getFavorites, setFavorites } from "../../store/common/favorites.slicer";
+import { addFavorites, deleteFavorites, getFavorites } from "../../store/common/favorites.slicer";
 import { FavoriteButton } from "../../components/common/FavoriteButton";
 import { isObjectInArray } from "../../utils/isObjectInArray";
 import { Currency } from "../../types";
@@ -28,7 +28,7 @@ export const Favorites = () => {
       <Title tag="h1">{t('favourites')}</Title>
       <div className="grid md:grid-cols-4 gap-[20px]">{favorites.map(el => (
         <div className="w-full rounded-md h-[100px] border-[2px] p-2 border-dashed flex justify-between">
-          <p>{el.name}</p>
+          <p className="mx-2 mt-12 text-xl text-gray-400">{el.name}</p>
           <div className="">
             <FavoriteButton item={el} onFavourite={handleFavourite} favouriteState={isObjectInArray(el, favorites)} />
           </div>
