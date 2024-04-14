@@ -9,8 +9,8 @@ export const Home = () => {
   return (
     <div className="flex flex-col gap-3">
       <Title tag="h1">{t("conversion")}</Title>
-      {countConverter.map(order => (
-        <div className="flex gap-5 justify-between items-center">
+      {countConverter.map((order, index) => (
+        <div className="flex gap-5 justify-between items-center" key={index}>
           <Converter key={order} />
           <button
             onClick={() =>
