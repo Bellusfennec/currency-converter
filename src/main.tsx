@@ -7,7 +7,7 @@ import store from "./store/store.ts";
 import './i18n.js';
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <BrowserRouter>
+  <BrowserRouter basename={import.meta.env.BASE_URL}>
     <Provider store={store}>
       <App />
     </Provider>
