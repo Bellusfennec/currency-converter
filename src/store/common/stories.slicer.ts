@@ -30,7 +30,19 @@ const setLocalStorage = (value: Array<Conversion>) => {
 type StoriesState = InitialState<Conversion[]>;
 
 const initialState: StoriesState = {
-  entity: [],
+  entity: [
+    {
+      from: {
+        name: "USD",
+        value: 1000
+      },
+      to: {
+        name: "RUB",
+        value: 90000
+      },
+      date: "14.04.2024, 16:30:44"
+    }
+  ],
   isLoading: false,
   error: null
 };

@@ -10,8 +10,7 @@ export type Currency = {
 };
 
 export type Conversion = {
-  from: string;
-  to: string;
-  value: number;
+  from: Currency;
+  to: Currency;
   date: string;
 };
