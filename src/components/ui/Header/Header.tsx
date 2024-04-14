@@ -1,14 +1,18 @@
 import { FC } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Container } from "../../common/Container";
+import { LanguageSelection } from "../LanguageSelection/LanguageSelection";
+import { useTranslation } from "react-i18next";
 
-const menuList = [{ name: "Избранное", link: "/favorites" }];
+const menuList = [{ name: "favourites", link: "/favorites" }];
 
 interface HeaderProps {
   className?: string;
 }
 
 export const Header: FC<HeaderProps> = ({ className }) => {
+  const { t } = useTranslation();
+
   return (
     <header className={"border-b" + (className ? " " + className : "")}>
       <Container className="flex justify-between items-center">
@@ -25,10 +29,11 @@ export const Header: FC<HeaderProps> = ({ className }) => {
               className="text-gray-700 py-3 hover:text-orange-700 duration-200"
               to={link}
             >
-              {name}
+              {t(name)}
             </NavLink>
           ))}
         </nav>
+        <LanguageSelection />
       </Container>
     </header>
   );

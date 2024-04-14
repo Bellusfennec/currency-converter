@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { Converter } from "../../components/ui/Converter";
 import { Title } from "../../components/common/Title";
+import { useTranslation } from "react-i18next";
 
 export const Home = () => {
   const [countConverter, setCountConverter] = useState([1]);
+  const { t } = useTranslation();
   return (
     <div className="flex flex-col gap-3">
-      <Title tag="h1">Конвертация валюты</Title>
+      <Title tag="h1">{t('conversion')}</Title>
       {countConverter.map(order => (
         <div className="flex gap-5 justify-between items-center">
           <Converter key={order} />
