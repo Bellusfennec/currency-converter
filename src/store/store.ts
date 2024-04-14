@@ -1,9 +1,11 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import currencyReducer from "./common/currency.slicer.ts";
+import favoritesReducer from "./common/favorites.slicer.ts";
 import isDev from "../utils/isDev.ts";
 
 const rootReducer = combineReducers({
-  currencies: currencyReducer
+  currencies: currencyReducer,
+  favorites: favoritesReducer
 });
 
 const store = configureStore({

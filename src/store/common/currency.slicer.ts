@@ -1,12 +1,18 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { Currencies, InitialState } from "../../types";
+import { Currency, InitialState } from "../../types";
 import httpService from "../../services/http.services.ts";
 
 export const requestCurrency = createAsyncThunk("currency/set", async () => {
   const currencies = await httpService.get(
     "https://v6.exchangerate-api.com/v6/b045ab2d173eabfad1494c2b/latest/USD"
   );
-  return currencies.data.conversion_rates;
+  const responce = currencies.data.conversion_rates;
+  const massCurrencies = [];
+  for (const currency in responce) {
+    console.log(currency);
+    massCurrencies.push({ name: currency, value: responce[currency] });
+  }
+  return massCurrencies;
 });
 
 const setPending = (state: CurrencyState) => {
@@ -19,10 +25,10 @@ const setRejected = (state: CurrencyState) => {
   state.error = true;
 };
 
-type CurrencyState = InitialState<Currencies>;
+type CurrencyState = InitialState<Array<Currency>>;
 
 const initialState: CurrencyState = {
-  entity: {},
+  entity: [],
   isLoading: false,
   error: null
 };
@@ -42,7 +48,7 @@ const currenciesSlice = createSlice({
 });
 
 export const getCurrencies =
-  () => (state: { currencies: { entity: Currencies } }) =>
+  () => (state: { currencies: { entity: Array<Currency> } }) =>
     state.currencies.entity;
 
 export const { reducer: currenciesReducer } = currenciesSlice;
