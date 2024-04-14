@@ -17,7 +17,7 @@ module.exports = {
   },
   ignorePatterns: ["dist", ".eslintrc.cjs"],
   parser: "@typescript-eslint/parser",
-  plugins: ["react-refresh", "import"],
+  plugins: ["react-refresh", "import", "i18n"],
   rules: {
     "semi": ["error", "always"],
     "space-before-function-paren": "off",
@@ -28,6 +28,12 @@ module.exports = {
     "react-hooks/exhaustive-deps": "off",
     "import/no-unresolved": "error",
     "@typescript-eslint/no-explicit-any": "off",
-    "@typescript-eslint/no-unused-vars": "off"
+    "@typescript-eslint/no-unused-vars": "off",
+    "i18n/no-chinese-character": 1,
+    "i18n/no-greek-character": 1,
+    "i18n/no-japanese-character": 1,
+    "i18n/no-korean-character": 1,
+    "i18n/no-russian-character": 1,
+    "i18n/no-thai-character": 1
   }
 };
