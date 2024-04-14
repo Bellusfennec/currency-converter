@@ -4,7 +4,10 @@ import { Container } from "../../common/Container";
 import { LanguageSelection } from "../LanguageSelection/LanguageSelection";
 import { useTranslation } from "react-i18next";
 
-const menuList = [{ name: "favourites", link: "/favorites" }];
+const menuList = [
+  { name: "favourites", link: "/favorites" },
+  { name: "story", link: "/story" }
+];
 
 interface HeaderProps {
   className?: string;
@@ -22,7 +25,7 @@ export const Header: FC<HeaderProps> = ({ className }) => {
         >
           CurCon
         </Link>
-        <nav>
+        <nav className="flex items-center gap-5">
           {menuList.map(({ name, link }) => (
             <NavLink
               key={name}

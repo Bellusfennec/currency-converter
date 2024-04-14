@@ -27,6 +27,7 @@ export const Selector: React.FC<SelectorProps> = ({
   onChange,
   value
 }) => {
+  console.log("#### value", value)
   const dispatch = useAppDispatch();
   const [favorites, setFavorites] = useState<Currency[]>(
     useAppSelector(getFavorites())
@@ -35,6 +36,10 @@ export const Selector: React.FC<SelectorProps> = ({
   const [show, setShow] = useState<boolean>(false);
   const selectRef = useRef<HTMLDivElement>(null);
   const { t } = useTranslation();
+
+  useEffect(() => {
+    setInputValue(value)
+  }, [value])
 
   useEffect(() => {
     document.addEventListener("click", handleClickOutside);

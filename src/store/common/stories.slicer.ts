@@ -62,7 +62,10 @@ const storiesSlice = createSlice({
     builder.addCase(addStories.pending, setPending);
     builder.addCase(addStories.fulfilled, (state, { payload }) => {
       state.isLoading = false;
-      const newState = [...state.entity, payload];
+      const newState = [
+        ...state.entity,
+        { ...payload, id: state.entity.length + 1 }
+      ];
       state.entity = newState;
       setLocalStorage(newState);
     });

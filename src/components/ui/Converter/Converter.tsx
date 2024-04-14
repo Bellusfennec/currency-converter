@@ -41,32 +41,25 @@ export const Converter = () => {
             setFormState(state => ({ ...state, amount: value }))
           }
         />
-        <div className="flex gap-3">
-          <Selector
-            options={currency}
-            value={(reversed ? formState.from?.name : formState.to?.name) || ""}
-            placeholder="From"
-            onChange={value =>
-              setFormState(state => ({ ...state, from: value }))
-            }
-          />
-          <ButtonReverse onReverse={handelReversed} />
-          <Selector
-            options={currency}
-            value={(reversed ? formState.to?.name : formState.from?.name) || ""}
-            placeholder="To"
-            onChange={value => setFormState(state => ({ ...state, to: value }))}
-          />
-        </div>
+        <Selector
+          options={currency}
+          value={formState.from?.name}
+          placeholder="From"
+          onChange={value => setFormState(state => ({ ...state, from: value }))}
+        />
+        <ButtonReverse onReverse={handelReversed} />
+        <Selector
+          options={currency}
+          value={formState.to?.name}
+          placeholder="To"
+          onChange={value => setFormState(state => ({ ...state, to: value }))}
+        />
       </div>
       {
         <Result
           amount={+formState.amount}
-          conversionIntoCurrency={formState.to.name}
-          convertibleCurrency={formState.from.name}
-          course={
-            currency.find(curr => curr.name === formState.to.name)?.value || 1
-          }
+          conversionIntoCurrency={formState.to}
+          convertibleCurrency={formState.from}
         />
       }
     </div>

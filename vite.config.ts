@@ -12,5 +12,6 @@ export default defineConfig({
   },
   resolve: {
     extensions: [".ts", ".tsx"]
-  }
+  },
+  base: "/currency-converter/"
 });
