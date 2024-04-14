@@ -8,3 +8,10 @@ export type Currency = {
   name: string;
   value: number;
 };
+
+export type Conversion = {
+  from: string;
+  to: string;
+  value: number;
+  date: string;
+};
