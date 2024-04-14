@@ -4,4 +4,7 @@ export type InitialState<T> = {
   error: boolean | null;
 };
 
-export type Currencies = Record<string, number>;
+export type Currency = {
+  name: string;
+  value: number;
+};
