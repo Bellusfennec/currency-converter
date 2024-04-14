@@ -35,7 +35,7 @@ export const Home = () => {
             onClick={() =>
               setCountConverter(state => state.filter(item => item !== order))
             }
-            className="border rounded-md px-5 text-[20px] bg-slate-50 text-red-700 hover:bg-red-100 hover:text-gray-700 duration-200 hover:border-red-100"
+            className="h-full border rounded-md px-5 text-[20px] bg-slate-50 text-red-700 hover:bg-red-100 hover:text-gray-700 duration-200 hover:border-red-100"
           >
             -
           </button>
