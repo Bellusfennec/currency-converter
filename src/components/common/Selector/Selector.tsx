@@ -1,27 +1,38 @@
-
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Currency } from "../../../types";
 import { FavoriteButton } from "../FavoriteButton";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
-import { addFavorites, deleteFavorites, getFavorites } from "../../../store/common/favorites.slicer";
+import {
+  addFavorites,
+  deleteFavorites,
+  getFavorites
+} from "../../../store/common/favorites.slicer";
 
 interface SelectorProps {
   options: Currency[];
   placeholder: string;
-  onChange: (object: Currency | null) => void
+  onChange: (object: Currency | null) => void;
+  value: string;
 }
 
 interface InputChangeEvent {
   target: HTMLInputElement;
 }
-  
-export const Selector: React.FC<SelectorProps> = ({ options = [], placeholder, onChange }) => {
-  const dispatch = useAppDispatch()
-  const [favorites, setFavorites] = useState<Currency[]>(useAppSelector(getFavorites()))
-  const [inputValue, setInputValue] = useState<string>("");
+
+export const Selector: React.FC<SelectorProps> = ({
+  options = [],
+  placeholder,
+  onChange,
+  value
+}) => {
+  const dispatch = useAppDispatch();
+  const [favorites, setFavorites] = useState<Currency[]>(
+    useAppSelector(getFavorites())
+  );
+  const [inputValue, setInputValue] = useState<string>(value);
   const [show, setShow] = useState<boolean>(false);
   const selectRef = useRef<HTMLDivElement>(null);
-  
+
   useEffect(() => {
     document.addEventListener("click", handleClickOutside);
     return () => {
@@ -29,18 +40,24 @@ export const Selector: React.FC<SelectorProps> = ({ options = [], placeholder, o
     };
   }, []);
 
-  const filterOptions = useMemo(() => [...options].sort((a, b) => {
-    const aIsFavorite = favorites.some(item => item.name === a.name);
-    const bIsFavorite = favorites.some(item => item.name === b.name);
+  const filterOptions = useMemo(
+    () =>
+      [...options]
+        .sort((a, b) => {
+          const aIsFavorite = favorites.some(item => item.name === a.name);
+          const bIsFavorite = favorites.some(item => item.name === b.name);
 
-    if (aIsFavorite === bIsFavorite) {
-      return 0;
-    }
-    if (aIsFavorite) {
-      return -1;
-    }
-    return 1;
-  }).filter(el => el.name.includes(inputValue)), [options, favorites, inputValue]);
+          if (aIsFavorite === bIsFavorite) {
+            return 0;
+          }
+          if (aIsFavorite) {
+            return -1;
+          }
+          return 1;
+        })
+        .filter(el => el.name.includes(inputValue)),
+    [options, favorites, inputValue]
+  );
 
   function isObjectInArray(object: Currency, array: Currency[]) {
     return array.some(item => item.name === object.name);
@@ -62,12 +79,12 @@ export const Selector: React.FC<SelectorProps> = ({ options = [], placeholder, o
 
   const handleFavourite = (element: Currency, state: boolean): void => {
     if (state) {
-      dispatch(addFavorites(element))
-      setFavorites(prevState => [element, ...prevState])
+      dispatch(addFavorites(element));
+      setFavorites(prevState => [element, ...prevState]);
     } else {
-      dispatch(deleteFavorites(element))
-      const filterFavorites = favorites.filter(el => el.name !== element.name)
-      setFavorites(filterFavorites)
+      dispatch(deleteFavorites(element));
+      const filterFavorites = favorites.filter(el => el.name !== element.name);
+      setFavorites(filterFavorites);
     }
   };
 
@@ -93,7 +110,7 @@ export const Selector: React.FC<SelectorProps> = ({ options = [], placeholder, o
         onClick={() => setShow(true)}
       ></input>
       {show && (
-        <div className="my-2 bg-white border w-full rounded-md py-2 text-base font-normal max-h-[200px] overflow-y-auto">
+        <div className="my-2 bg-white border w-full rounded-md py-2 text-base font-normal max-h-[200px] overflow-y-auto ">
           {filterOptions.length !== 0 ? (
             filterOptions.map(el => (
               <div
@@ -106,7 +123,11 @@ export const Selector: React.FC<SelectorProps> = ({ options = [], placeholder, o
                 >
                   {el.name}
                 </div>
-                <FavoriteButton item={el} onFavourite={handleFavourite} favouriteState={isObjectInArray(el, favorites)} />
+                <FavoriteButton
+                  item={el}
+                  onFavourite={handleFavourite}
+                  favouriteState={isObjectInArray(el, favorites)}
+                />
               </div>
             ))
           ) : (

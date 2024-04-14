@@ -8,7 +8,7 @@ export const Home = () => {
   const { t } = useTranslation();
   return (
     <div className="flex flex-col gap-3">
-      <Title tag="h1">{t('conversion')}</Title>
+      <Title tag="h1">{t("conversion")}</Title>
       {countConverter.map(order => (
         <div className="flex gap-5 justify-between items-center">
           <Converter key={order} />
