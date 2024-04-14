@@ -13,7 +13,7 @@ export const Header: FC<HeaderProps> = ({ className }) => {
     <header className={"border-b" + (className ? " " + className : "")}>
       <Container className="flex justify-between items-center">
         <Link
-          className="font-bold text-2xl text-orange-700 hover:text-orange-900 py-3"
+          className="font-bold text-2xl text-orange-700 hover:text-orange-900 py-3 duration-200"
           to="/"
         >
           CurCon
@@ -22,7 +22,7 @@ export const Header: FC<HeaderProps> = ({ className }) => {
           {menuList.map(({ name, link }) => (
             <NavLink
               key={name}
-              className="text-gray-700 py-3 hover:text-orange-700"
+              className="text-gray-700 py-3 hover:text-orange-700 duration-200"
               to={link}
             >
               {name}

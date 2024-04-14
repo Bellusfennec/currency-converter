@@ -11,7 +11,7 @@ export const Footer: FC<FooterProps> = ({ className }) => {
     <footer className={"border-t" + (className ? " " + className : "")}>
       <Container className="py-1 flex justify-center">
         <Link
-          className="font-bold text-gray-700 hover:text-gray-900 py-3"
+          className="font-bold text-gray-700 hover:text-gray-900 py-3 duration-200"
           to="https://github.com/Bellusfennec/currency-converter"
           target="_blank"
         >
