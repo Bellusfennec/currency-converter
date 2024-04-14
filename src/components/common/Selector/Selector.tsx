@@ -8,6 +8,7 @@ import {
   getFavorites
 } from "../../../store/common/favorites.slicer";
 import { isObjectInArray } from "../../../utils/isObjectInArray";
+import { useTranslation } from "react-i18next";
 
 interface SelectorProps {
   options: Currency[];
@@ -33,6 +34,7 @@ export const Selector: React.FC<SelectorProps> = ({
   const [inputValue, setInputValue] = useState<string>(value);
   const [show, setShow] = useState<boolean>(false);
   const selectRef = useRef<HTMLDivElement>(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     document.addEventListener("click", handleClickOutside);
@@ -132,7 +134,7 @@ export const Selector: React.FC<SelectorProps> = ({
             ))
           ) : (
             <div className="px-4 py-1 text-base cursor-pointer font-normal text-black">
-              No results avaible
+              {t('nothing')}
             </div>
           )}
         </div>

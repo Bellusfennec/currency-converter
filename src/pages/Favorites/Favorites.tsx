@@ -26,15 +26,21 @@ export const Favorites = () => {
   return (
     <div className="flex flex-col gap-5">
       <Title tag="h1">{t('favourites')}</Title>
-      <div className="grid md:grid-cols-4 gap-[20px]">{favorites.map(el => (
-        <div className="w-full rounded-md h-[100px] border-[2px] p-2 border-dashed flex justify-between">
-          <p className="mx-2 mt-12 text-xl text-gray-400">{el.name}</p>
-          <div className="">
-            <FavoriteButton item={el} onFavourite={handleFavourite} favouriteState={isObjectInArray(el, favorites)} />
-          </div>
+      {favorites.length === 0 ?
+        <div className="w-full h-[60vh] flex items-center justify-center">
+          <p className="text-xl font-semibold text-gray-300">{t('nothing')}</p>
         </div>
-        ))
-      }</div>
+        : <div className="grid md:grid-cols-4 gap-[20px]">
+          {favorites.map(el => (
+            <div key={el.name} className="w-full rounded-md h-[100px] border-[2px] p-2 border-dashed flex justify-between">
+              <p className="mx-2 mt-12 text-xl text-gray-400">{el.name}</p>
+              <div className="">
+                <FavoriteButton item={el} onFavourite={handleFavourite} favouriteState={isObjectInArray(el, favorites)} />
+              </div>
+            </div>
+          ))}
+        </div>
+      }
     </div>
   );
 };
