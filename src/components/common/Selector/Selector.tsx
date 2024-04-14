@@ -7,6 +7,7 @@ import {
   deleteFavorites,
   getFavorites
 } from "../../../store/common/favorites.slicer";
+import { isObjectInArray } from "../../../utils/isObjectInArray";
 
 interface SelectorProps {
   options: Currency[];
@@ -59,9 +60,6 @@ export const Selector: React.FC<SelectorProps> = ({
     [options, favorites, inputValue]
   );
 
-  function isObjectInArray(object: Currency, array: Currency[]) {
-    return array.some(item => item.name === object.name);
-  }
 
   const handleChange = ({ target }: InputChangeEvent): void => {
     setInputValue(target.value);
@@ -97,7 +95,7 @@ export const Selector: React.FC<SelectorProps> = ({
   return (
     <div
       ref={selectRef}
-      className="m-10 w-[200px] rounded-sm flex items-center flex-col text-base font-normal relative"
+      className="w-[200px] rounded-sm flex items-center flex-col text-base font-normal relative"
     >
       <input
         className="
