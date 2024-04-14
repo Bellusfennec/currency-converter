@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Converter } from "../../components/ui/Converter";
 import { Title } from "../../components/common/Title";
 import { useTranslation } from "react-i18next";
@@ -9,8 +9,7 @@ export const Home = () => {
   const [countConverter, setCountConverter] = useState([1]);
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
-  const handlerAddConversion = () => {
-    setCountConverter(state => [...state, state.length + 1]);
+  const addConversionInStory = () => {
     dispatch(
       addStories({
         from: {
@@ -25,6 +24,13 @@ export const Home = () => {
       })
     );
   };
+  const handlerAddConversion = () => {
+    setCountConverter(state => [...state, state.length + 1]);
+    addConversionInStory();
+  };
+  useEffect(() => {
+    addConversionInStory();
+  }, []);
   return (
     <div className="flex flex-col gap-3">
       <Title tag="h1">{t("conversion")}</Title>

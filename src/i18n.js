@@ -16,6 +16,7 @@ i18n
         translation: {
           language: { en: "English", ru: "Russian" },
           favourites: "Favourites",
+          story: "Story",
           conversion: "Currency conversion",
           nothing: "Nothing was found."
         }
@@ -24,6 +25,7 @@ i18n
         translation: {
           language: { en: "Английский", ru: "Русский" },
           favourites: "Избранное",
+          story: "История",
           conversion: "Конвертация валюты",
           nothing: "Ничего не найдено."
         }
