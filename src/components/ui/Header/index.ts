@@ -1,5 +1,3 @@
-import React from "react";
-const Header = React.lazy(() =>
-  import("./Header").then(module => ({ default: module.Header }))
-);
+import { Header } from "./Header.tsx";
+
 export { Header };
