@@ -43,14 +43,14 @@ export const Converter = () => {
         />
         <Selector
           options={currency}
-          value={(reversed ? formState.from?.name : formState.to?.name) || ""}
+          value={formState.from?.name}
           placeholder="From"
           onChange={value => setFormState(state => ({ ...state, from: value }))}
         />
         <ButtonReverse onReverse={handelReversed} />
         <Selector
           options={currency}
-          value={(reversed ? formState.to?.name : formState.from?.name) || ""}
+          value={formState.to?.name}
           placeholder="To"
           onChange={value => setFormState(state => ({ ...state, to: value }))}
         />
@@ -58,11 +58,8 @@ export const Converter = () => {
       {
         <Result
           amount={+formState.amount}
-          conversionIntoCurrency={formState.to.name}
-          convertibleCurrency={formState.from.name}
-          course={
-            currency.find(curr => curr.name === formState.to.name)?.value || 1
-          }
+          conversionIntoCurrency={formState.to}
+          convertibleCurrency={formState.from}
         />
       }
     </div>

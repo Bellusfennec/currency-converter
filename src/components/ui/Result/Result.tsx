@@ -1,17 +1,16 @@
 import { useCallback } from "react";
+import { Currency } from "../../../types";
 
 interface Props {
   amount: number;
-  convertibleCurrency: string;
-  conversionIntoCurrency: string;
-  course: number;
+  convertibleCurrency: Currency;
+  conversionIntoCurrency: Currency;
 }
 
 export const Result = ({
   amount,
   convertibleCurrency,
   conversionIntoCurrency,
-  course
 }: Props) => {
   const numberWithSpaces = useCallback(
     (num: number) => {
@@ -22,23 +21,22 @@ export const Result = ({
       }
       return parts.join(".");
     },
-    [amount, course]
+    [amount, conversionIntoCurrency.value, convertibleCurrency.value]
   );
 
   return (
     <div className="w-full">
       <div className="text-gray-500 font-semibold text-2xl">
-        {numberWithSpaces(amount)} {convertibleCurrency} =
+        {numberWithSpaces(amount)} {convertibleCurrency.name} =
       </div>
       <div className="text-gray-600 font-bold text-3xl my-2.5">
-        {numberWithSpaces(amount * course)} {conversionIntoCurrency}
+        {numberWithSpaces(amount / convertibleCurrency.value * conversionIntoCurrency.value)} {conversionIntoCurrency.name}
       </div>
       <div className="text-gray-500 font-normal text-sm">
-        1 {convertibleCurrency} = {course} {conversionIntoCurrency}
+        1 {convertibleCurrency.name} = {(1 / convertibleCurrency.value * conversionIntoCurrency.value).toFixed(7)} {conversionIntoCurrency.name}
       </div>
       <div className="text-gray-500 font-normal text-sm">
-        1 {conversionIntoCurrency} = {(1 / course).toFixed(7)}{" "}
-        {convertibleCurrency}
+        1 {conversionIntoCurrency.name} = {(1 / conversionIntoCurrency.value * convertibleCurrency.value).toFixed(7)} {convertibleCurrency.name}
       </div>
     </div>
   );
