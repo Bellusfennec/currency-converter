@@ -1,5 +1,3 @@
-import React from "react";
-const Container = React.lazy(() =>
-  import("./Container").then(module => ({ default: module.Container }))
-);
+import { Container } from "./Container.tsx";
+
 export { Container };
