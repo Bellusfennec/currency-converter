@@ -97,7 +97,7 @@ export const Selector: React.FC<SelectorProps> = ({
   return (
     <div
       ref={selectRef}
-      className="m-10 w-[200px] rounded-sm flex items-center flex-col text-base font-normal"
+      className="m-10 w-[200px] rounded-sm flex items-center flex-col text-base font-normal relative"
     >
       <input
         className="
@@ -110,7 +110,7 @@ export const Selector: React.FC<SelectorProps> = ({
         onClick={() => setShow(true)}
       ></input>
       {show && (
-        <div className="my-2 bg-white border w-full rounded-md py-2 text-base font-normal max-h-[200px] overflow-y-auto ">
+        <div className="absolute top-full my-2 bg-white border w-full rounded-md py-2 text-base font-normal max-h-[200px] overflow-y-auto ">
           {filterOptions.length !== 0 ? (
             filterOptions.map(el => (
               <div
