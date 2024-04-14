@@ -66,7 +66,7 @@ export const Selector: React.FC<SelectorProps> = ({
   const handleChange = ({ target }: InputChangeEvent): void => {
     setInputValue(target.value);
     if (target.value.length === 0) {
-      onChange({ name: 'USD', value: 1 });
+      onChange({ name: "USD", value: 1 });
     }
   };
 
@@ -97,7 +97,7 @@ export const Selector: React.FC<SelectorProps> = ({
   return (
     <div
       ref={selectRef}
-      className="m-10 w-[200px] rounded-sm flex items-center flex-col text-base font-normal relative"
+      className="w-[200px] rounded-sm flex items-center flex-col text-base font-normal relative"
     >
       <input
         className="
