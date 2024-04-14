@@ -62,7 +62,6 @@ export const Selector: React.FC<SelectorProps> = ({
     [options, favorites, inputValue]
   );
 
-
   const handleChange = ({ target }: InputChangeEvent): void => {
     setInputValue(target.value);
     if (target.value.length === 0) {
@@ -134,7 +133,7 @@ export const Selector: React.FC<SelectorProps> = ({
             ))
           ) : (
             <div className="px-4 py-1 text-base cursor-pointer font-normal text-black">
-              {t('nothing')}
+              {t("nothing")}
             </div>
           )}
         </div>
