@@ -11,7 +11,7 @@ import {
 interface SelectorProps {
   options: Currency[];
   placeholder: string;
-  onChange: (object: Currency | null) => void;
+  onChange: (object: Currency) => void;
   value: string;
 }
 
@@ -66,7 +66,7 @@ export const Selector: React.FC<SelectorProps> = ({
   const handleChange = ({ target }: InputChangeEvent): void => {
     setInputValue(target.value);
     if (target.value.length === 0) {
-      onChange(null);
+      onChange({ name: 'USD', value: 1 });
     }
   };
 
