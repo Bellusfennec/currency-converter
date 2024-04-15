@@ -33,7 +33,7 @@ export const Converter = () => {
 
   return (
     <div className="flex gap-3 flex-col justify-center md:w-full">
-      <div className="flex gap-3 flex-col md:flex-row">
+      <div className="flex gap-3 flex-col items-center md:flex-row">
         <InputField
           label={formState.from?.name || ""}
           value={formState.amount}
